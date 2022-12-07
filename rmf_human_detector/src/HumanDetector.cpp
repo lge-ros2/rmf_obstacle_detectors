@@ -96,6 +96,24 @@ HumanDetector::HumanDetector(const rclcpp::NodeOptions& options)
     _data->_image_detections_topic,
     rclcpp::SensorDataQoS()
     );
+  RCLCPP_INFO(
+    this->get_logger(),
+    "camera image topic: %s", _data->_camera_image_topic.c_str()
+  );
+  RCLCPP_INFO(
+    this->get_logger(),
+    "_camera_parent_name: %s", _data->_camera_parent_name.c_str()
+  );
+
+  RCLCPP_INFO(
+    this->get_logger(),
+    "_camera_name: %s", _data->_camera_name.c_str()
+  );
+
+  RCLCPP_INFO(
+    this->get_logger(),
+    "_image_detections_topic: %s", _data->_image_detections_topic.c_str()
+  );
 
   _data->_image_sub = this->create_subscription<sensor_msgs::msg::Image>(
     _data->_camera_image_topic,
@@ -138,7 +156,7 @@ void HumanDetector::make_detector()
     this->get_logger(),
     "Setting parameter camera_name to %s", _data->_camera_name.c_str()
   );
-  _data->_camera_image_topic = _data->_camera_name;
+  _data->_camera_image_topic = _data->_camera_name + "/image_raw";
   _data->_camera_info_topic = _data->_camera_name + "/camera_info";
   _data->_image_detections_topic = _data->_camera_name + "/image_detections";
 

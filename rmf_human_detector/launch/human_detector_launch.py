@@ -43,7 +43,8 @@ def generate_launch_description():
            package='rmf_human_detector',
            executable='human_detector_node',
            parameters=[
-                {"camera_name": "camera1"},
+                {"camera_parent_name": "front_camera_color_frame"},
+                {"camera_name": "front/color"},
                 {"camera_level": "L1"},
                 {"nn_filepath": model_path},
                 {"labels_filepath": labels_path},
@@ -62,8 +63,8 @@ def generate_launch_description():
             package='tf2_ros',
             executable='static_transform_publisher',
             arguments = [
-                '--frame-id', 'map',
-                '--child-frame-id', 'camera1',
+                '--frame-id', 'front_camera_color_frame',
+                '--child-frame-id', 'front/color',
                 '--x', '0',
                 '--y', '0',
                 '--z', '0',

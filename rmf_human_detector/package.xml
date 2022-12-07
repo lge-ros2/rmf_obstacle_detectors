@@ -13,7 +13,7 @@
   <depend>cv_bridge</depend>
   <depend>geometry_msgs</depend>
   <depend>image_geometry</depend>
-  <depend>OpenCV</depend>
+  <depend>libopencv-dev</depend>
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>rmf_building_map_msgs</depend>
